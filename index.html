@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>External Markdown Test</title>
+
+  <link rel="stylesheet" href="style2.css">
+</head>
+
+<body>
+
+  <!-- Sidebar toggle -->
+  <button id="menuToggle" type="button" aria-expanded="false" aria-controls="sidebar" aria-label="Open menu">
+    <span class="menuIcon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+  </button>
+
+  <!-- Backdrop -->
+  <div id="backdrop" hidden></div>
+
+  <!-- Sidebar -->
+  <aside id="sidebar" aria-hidden="true">
+
+    <div class="sidebarHeader">
+      <h2>Markdown viewer</h2>
+      <button id="closeSidebar" type="button" aria-label="Close menu">&times;</button>
+    </div>
+
+    <section class="sidebarSection">
+      <h3>Load from URL</h3>
+
+      <label for="markdownUrl">Markdown URL</label>
+
+      <input
+        id="markdownUrl"
+        type="url"
+        placeholder="Paste a raw .md URL here"
+      >
+
+      <button id="loadButton" type="button">
+        Load from URL
+      </button>
+    </section>
+
+    <section class="sidebarSection">
+      <h3>Load from file</h3>
+
+      <label for="markdownFile" class="fileLabel">
+        Choose a .md file
+      </label>
+
+      <input
+        id="markdownFile"
+        type="file"
+        accept=".md,.markdown,.txt,text/markdown,text/plain"
+        class="visuallyHidden"
+      >
+
+      <p id="fileName" class="fileName"></p>
+    </section>
+
+    <section class="sidebarSection">
+      <h3>Theme</h3>
+
+      <div class="themeControls" role="group" aria-label="Theme">
+        <button type="button" data-theme="tokyo" aria-pressed="true">
+          Tokyo Violet
+        </button>
+
+        <button type="button" data-theme="nord" aria-pressed="false">
+          Nord Frost
+        </button>
+
+        <button type="button" data-theme="dracula" aria-pressed="false">
+          Dracula Neon
+        </button>
+
+        <button type="button" data-theme="gruvbox" aria-pressed="false">
+          Gruvbox Amber
+        </button>
+
+        <button type="button" data-theme="paper" aria-pressed="false">
+          Paper Light
+        </button>
+      </div>
+    </section>
+
+    <p id="status" aria-live="polite">
+      Enter a raw Markdown URL, or choose a file, to get started.
+    </p>
+
+  </aside>
+
+  <!-- Markdown output fills the whole page -->
+  <main>
+    <article id="markdownOutput" data-theme="tokyo">
+      <div id="markdownContent"></div>
+    </article>
+  </main>
+
+  <!-- Markdown converter -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- Application JavaScript -->
+  <script src="script2.js"></script>
+
+</body>
+
+</html>

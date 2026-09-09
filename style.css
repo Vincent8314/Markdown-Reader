@@ -1,0 +1,1121 @@
+@import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --chrome-bg: #14161a;
+  --chrome-bg-raised: #1d2026;
+  --chrome-border: #2a2d34;
+  --chrome-text: #e7e7ea;
+  --chrome-text-dim: #9a9da5;
+  --accent: blueviolet;
+  --accent-contrast: #f4ecff;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: white;
+  background-color: #666;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+input {
+  font: inherit;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+
+/* =========================
+   MAIN / MARKDOWN AREA
+   ========================= */
+
+main {
+  min-height: 100vh;
+}
+
+#markdownOutput {
+  min-height: 100vh;
+  padding: 5rem 1.5rem 3rem;
+}
+
+/* One shared reading column. Every markdown element inherits
+   this width — nothing inside sets its own max-width/centering. */
+#markdownContent {
+  max-width: 880px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#markdownContent:empty::before {
+  content: "Nothing loaded yet. Open the menu to load a Markdown file or URL.";
+  display: block;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+}
+
+/* =========================
+   BURGER MENU TOGGLE
+   ========================= */
+
+#menuToggle {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 30;
+
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: 1px solid var(--chrome-border);
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--chrome-bg-raised);
+  color: var(--chrome-text);
+
+  transition: background-color 0.15s ease;
+}
+
+#menuToggle:hover {
+  background-color: var(--chrome-border);
+}
+
+#menuToggle:focus-visible,
+#closeSidebar:focus-visible,
+.sidebarSection button:focus-visible,
+.sidebarSection input:focus-visible,
+.fileLabel:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.menuIcon {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 1.25rem;
+}
+
+.menuIcon span {
+  display: block;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 1px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+#menuToggle[aria-expanded="true"] .menuIcon span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+#menuToggle[aria-expanded="true"] .menuIcon span:nth-child(2) {
+  opacity: 0;
+}
+
+#menuToggle[aria-expanded="true"] .menuIcon span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* =========================
+BACKDROP
+   ========================= */
+
+#backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#backdrop[hidden] {
+  display: none;
+}
+
+
+/* =========================
+   SIDEBAR
+   ========================= */
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 25;
+  height: 100vh;
+  width: min(320px, 85vw);
+  overflow-y: auto;
+
+  background-color: var(--chrome-bg);
+  border-right: 1px solid var(--chrome-border);
+  color: var(--chrome-text);
+
+  padding: 1.5rem 1.25rem 2rem;
+
+  transform: translateX(-100%);
+  transition: transform 0.22s ease;
+}
+
+#sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.sidebarHeader h2 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+#closeSidebar {
+  display: none; /* not display because redondant made by claude */
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--chrome-text-dim);
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+#closeSidebar:hover {
+  background-color: var(--chrome-border);
+  color: var(--chrome-text);
+}
+
+.sidebarSection {
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--chrome-border);
+}
+
+.sidebarSection:last-of-type {
+  border-bottom: none;
+}
+
+.sidebarSection h3 {
+  font-size: 0.8rem;
+  color: var(--chrome-text-dim);
+  margin: 0 0 0.6rem;
+  font-weight: 600;
+}
+
+.sidebarSection label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 0.4rem;
+}
+
+.sidebarSection input[type="url"] {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  margin-bottom: 0.6rem;
+  border: 1px solid var(--chrome-border);
+  border-radius: 6px;
+  background-color: var(--chrome-bg-raised);
+  color: var(--chrome-text);
+}
+
+.sidebarSection input[type="url"]::placeholder {
+  color: var(--chrome-text-dim);
+}
+
+.sidebarSection button {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  background-color: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: 600;
+  transition: filter 0.15s ease;
+}
+
+.sidebarSection button:hover {
+  filter: brightness(1.1);
+}
+
+.fileLabel {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border: 1px dashed var(--chrome-border);
+  border-radius: 6px;
+  background-color: var(--chrome-bg-raised);
+  color: var(--chrome-text);
+  text-align: center;
+  font-weight: 600;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.fileLabel:hover {
+  border-color: var(--accent);
+  background-color: var(--chrome-border);
+}
+
+.fileName {
+  margin: 0.5rem 0 0;
+  font-size: 0.8rem;
+  color: var(--chrome-text-dim);
+  word-break: break-all;
+}
+
+.themeControls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.themeControls button {
+  flex: 1;
+  padding: 0.5rem 0.4rem;
+  border: 1px solid var(--chrome-border);
+  border-radius: 6px;
+  background-color: var(--chrome-bg-raised);
+  color: var(--chrome-text);
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+.themeControls button:hover {
+  border-color: var(--accent);
+}
+
+.themeControls button[aria-pressed="true"] {
+  border-color: var(--accent);
+  background-color: var(--accent);
+  color: var(--accent-contrast);
+}
+
+#status {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--chrome-text-dim);
+  min-height: 1.4rem;
+}
+
+
+/* =========================
+   REDUCED MOTION
+   ========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  #sidebar,
+  .menuIcon span,
+  #menuToggle {
+    transition: none;
+  }
+}
+
+
+/* =============================================================
+   MARKDOWN THEMES
+   5 selectable palettes for #markdownOutput. Only the token
+   values change between themes; every visual rule below
+   references var(--token-name), so switching data-theme on
+   #markdownOutput is enough to fully re-skin the content.
+   =============================================================
+*/
+
+#markdownOutput[data-theme="tokyo"] {
+    /* Neutrals */
+    --black: #0d1117;
+    --dark-gray: #161b22;
+    --dark-blue: #1a1b26;
+    --gray: #30364a;
+    --gray-blue: #556283;
+    --muted-blue: #565f89;
+
+    /* Light neutrals */
+    --light-gray: #a9b1d6;
+    --light-blue-gray: #c0caf5;
+    --white-blue: #c9e0f0;
+    --table-text: #c8d1dc;
+
+    /* Selection */
+    --selection-background: #45458f;
+    --selection-text: #89dddff2;
+
+    /* Accent colors */
+    --blue: #40a0fa;
+    --blue-hover: #4db4fa;
+    --blue-active: #5ac4fa;
+    --purple: #bb9af7;
+    --blue-purple: #a78bfa;
+    --blue-purple-active: #6666dd;
+    --cyan: #0db9d7;
+    --new-blue: #60a5f0;
+    --light-cyan: #7dcfff;
+    --green: #9ece6a;
+    --orange: #ff9e64;
+    --yellow: #e0af68;
+    --pink: #f7768e;
+    --magenta: #9d7cd8;
+    --light-blue: #89ddff;
+
+    /* Semantic */
+    --mark-text: #1a1b26;
+    --highlight: #ebcb8b;
+    --accent-rail: #7744aa;
+    --heading-rail-start: #543c7d;
+    --heading-text: #eeeeee;
+
+    /* Transparent */
+    --light-blue-transparent: #89dddff2;
+}
+
+#markdownOutput[data-theme="nord"] {
+    /* Neutrals */
+    --black: #2e3440;
+    --dark-gray: #333947;
+    --dark-blue: #3b4252;
+    --gray: #4c566a;
+    --gray-blue: #4c566a;
+    --muted-blue: #616e88;
+
+    /* Light neutrals */
+    --light-gray: #d8dee9;
+    --light-blue-gray: #e5e9f0;
+    --white-blue: #eceff4;
+    --table-text: #e5e9f0;
+
+    /* Selection */
+    --selection-background: #434c5e;
+    --selection-text: #88c0d0;
+
+    /* Accent colors */
+    --blue: #81a1c1;
+    --blue-hover: #93b4d6;
+    --blue-active: #5e81ac;
+    --purple: #b48ead;
+    --blue-purple: #b48ead;
+    --blue-purple-active: #9a749a;
+    --cyan: #88c0d0;
+    --new-blue: #81a1c1;
+    --light-cyan: #8fbcbb;
+    --green: #a3be8c;
+    --orange: #d08770;
+    --yellow: #ebcb8b;
+    --pink: #bf616a;
+    --magenta: #b48ead;
+    --light-blue: #88c0d0;
+
+    /* Semantic */
+    --mark-text: #3b4252;
+    --highlight: #ebcb8b;
+    --accent-rail: #5e81ac;
+    --heading-rail-start: #3b4a63;
+    --heading-text: #eceff4;
+
+    /* Transparent */
+    --light-blue-transparent: #88c0d0f2;
+}
+
+#markdownOutput[data-theme="dracula"] {
+    /* Neutrals */
+    --black: #191a21;
+    --dark-gray: #21222c;
+    --dark-blue: #282a36;
+    --gray: #44475a;
+    --gray-blue: #6272a4;
+    --muted-blue: #6272a4;
+
+    /* Light neutrals */
+    --light-gray: #e6e6f0;
+    --light-blue-gray: #f8f8f2;
+    --white-blue: #f8f8f2;
+    --table-text: #f8f8f2;
+
+    /* Selection */
+    --selection-background: #44475a;
+    --selection-text: #f8f8f2;
+
+    /* Accent colors */
+    --blue: #8be9fd;
+    --blue-hover: #9aeeff;
+    --blue-active: #6fe3ff;
+    --purple: #bd93f9;
+    --blue-purple: #bd93f9;
+    --blue-purple-active: #a277e0;
+    --cyan: #8be9fd;
+    --new-blue: #62d6ef;
+    --light-cyan: #a4ffff;
+    --green: #50fa7b;
+    --orange: #ffb86c;
+    --yellow: #f1fa8c;
+    --pink: #ff79c6;
+    --magenta: #ff79c6;
+    --light-blue: #8be9fd;
+
+    /* Semantic */
+    --mark-text: #282a36;
+    --highlight: #f1fa8c;
+    --accent-rail: #bd93f9;
+    --heading-rail-start: #6d4fa3;
+    --heading-text: #f8f8f2;
+
+    /* Transparent */
+    --light-blue-transparent: #8be9fdf2;
+}
+
+#markdownOutput[data-theme="gruvbox"] {
+    /* Neutrals */
+    --black: #1d2021;
+    --dark-gray: #282828;
+    --dark-blue: #3c3836;
+    --gray: #504945;
+    --gray-blue: #7c6f64;
+    --muted-blue: #928374;
+
+    /* Light neutrals */
+    --light-gray: #d5c4a1;
+    --light-blue-gray: #ebdbb2;
+    --white-blue: #fbf1c7;
+    --table-text: #ebdbb2;
+
+    /* Selection */
+    --selection-background: #504945;
+    --selection-text: #fe8019;
+
+    /* Accent colors */
+    --blue: #83a598;
+    --blue-hover: #94b8ab;
+    --blue-active: #458588;
+    --purple: #d3869b;
+    --blue-purple: #d3869b;
+    --blue-purple-active: #b16286;
+    --cyan: #8ec07c;
+    --new-blue: #83a598;
+    --light-cyan: #8ec07c;
+    --green: #b8bb26;
+    --orange: #fe8019;
+    --yellow: #fabd2f;
+    --pink: #fb4934;
+    --magenta: #d3869b;
+    --light-blue: #83a598;
+
+    /* Semantic */
+    --mark-text: #3c3836;
+    --highlight: #fabd2f;
+    --accent-rail: #d3869b;
+    --heading-rail-start: #a35c6c;
+    --heading-text: #fbf1c7;
+
+    /* Transparent */
+    --light-blue-transparent: #ebdbb2f2;
+}
+
+#markdownOutput[data-theme="paper"] {
+    /* Neutrals (background layers, light -> to slightly shaded) */
+    --black: #ffffff;
+    --dark-gray: #f6f8fa;
+    --dark-blue: #eef1f5;
+    --gray: #d0d7de;
+    --gray-blue: #6e7781;
+    --muted-blue: #8b949e;
+
+    /* Text neutrals (dark, for contrast on white) */
+    --light-gray: #444c56;
+    --light-blue-gray: #24292f;
+    --white-blue: #14233b;
+    --table-text: #24292f;
+
+    /* Selection */
+    --selection-background: #b4d7ff;
+    --selection-text: #0b4f6c;
+
+    /* Accent colors */
+    --blue: #0969da;
+    --blue-hover: #1a7bff;
+    --blue-active: #0550ae;
+    --purple: #8250df;
+    --blue-purple: #6639ba;
+    --blue-purple-active: #4f2a94;
+    --cyan: #0598bc;
+    --new-blue: #1170cf;
+    --light-cyan: #0598bc;
+    --green: #116329;
+    --orange: #953800;
+    --yellow: #7d4e00;
+    --pink: #cf222e;
+    --magenta: #8250df;
+    --light-blue: #218bff;
+
+    /* Semantic */
+    --mark-text: #1b1f24;
+    --highlight: #fff8c5;
+    --accent-rail: #8250df;
+    --heading-rail-start: #cbb8f0;
+    --heading-text: #1b1f24;
+
+    /* Transparent */
+    --light-blue-transparent: #0969dad9;
+}
+
+/* =========================================================
+   2. GLOBAL / ROOT
+   ========================================================= */
+
+#markdownOutput {
+    background: var(--black) !important;
+    color: var(--light-blue-gray);
+    font-family: "Nunito", sans-serif !important;
+}
+
+#markdownOutput div,
+#markdownOutput span {
+    color: var(--light-gray);
+}
+
+/* =========================================================
+   GLOBAL BORDER LEFT HOVER
+   ========================================================= */
+
+#markdownOutput *::before {
+    border-left: 3px solid var(--accent-rail) !important;
+}
+
+#markdownOutput p.code-line:has(img):hover::before {
+    border-left: 3px !important;
+}
+
+#markdownOutput *::selection {
+    background: var(--selection-background);
+    color: var(--selection-text);
+}
+
+/* =========================================================
+   3. HEADINGS (h1–h6)
+   ========================================================= */
+
+#markdownOutput h1 {
+    font-size: 2rem !important;
+}
+
+#markdownOutput h1,
+#markdownOutput h2,
+#markdownOutput h3,
+#markdownOutput h4,
+#markdownOutput h5,
+#markdownOutput h6 {
+    width: fit-content;
+    color: var(--blue-purple) !important;
+    padding: 0 !important;
+}
+
+#markdownOutput h1 {
+        border-bottom: 4px solid transparent;
+        letter-spacing: -0.02em;
+        text-decoration: none !important;
+        text-underline-offset: 0.3rem;
+        border-image: linear-gradient(0deg, var(--heading-rail-start) 0px, var(--blue-purple) 1px, transparent 1px) 1 !important;
+        border-image-slice: 1 !important;
+        color: var(--heading-text);
+        font-family: sans-serif;
+        padding-bottom: 0.5rem;
+    }
+
+#markdownOutput h2,
+#markdownOutput h3 {
+        border-bottom: 3px solid transparent;
+        letter-spacing: -0.02em;
+        text-decoration: none !important;
+        text-underline-offset: 0.3rem;
+        border-image: linear-gradient(0deg, var(--heading-rail-start) 0px, var(--blue-purple) 1px, transparent 1px) 1 !important;
+        border-image-slice: 1 !important;
+        color: var(--heading-text);
+        font-family: sans-serif;
+        padding-bottom: 0.5rem;
+    }
+
+#markdownOutput h4,
+#markdownOutput h5,
+#markdownOutput h6 {
+        border-bottom: 3px solid var(--gray);
+        letter-spacing: -0.02em;
+        text-decoration: none !important;
+        text-underline-offset: 0.3rem;
+        border-image: linear-gradient(0deg, var(--heading-rail-start) 0px, var(--blue-purple) 1px, transparent 20px) 1 !important;
+        border-image-slice: 1 !important;
+        color: var(--heading-text);
+        font-family: sans-serif;
+        padding-bottom: 0.5rem;
+    }
+
+/* Headings containing/holding code */
+
+#markdownOutput :is(h1, h2, h3, h4, h5, h6):has(code),
+#markdownOutput :is(h1, h2, h3, h4, h5, h6)>code {
+    color: var(--blue-purple) !important;
+    text-decoration: none !important;
+}
+
+#markdownOutput :is(h1, h2, h3, h4, h5, h6):has(code):hover {
+    color: var(--blue-purple) !important;
+    text-decoration: none !important;
+    border-left: none !important;
+}
+
+/* Headings containing <strong> */
+
+#markdownOutput :is(h1, h2, h3, h4, h5, h6)>strong {
+    color: var(--blue-purple);
+}
+
+/* =========================================================
+   4. BODY TEXT (p, li, dd)
+   ========================================================= */
+
+#markdownOutput p,
+#markdownOutput li,
+#markdownOutput dd {
+    color: var(--light-blue-gray);
+}
+
+#markdownOutput p.code-line {
+    margin: 0 !important;
+}
+
+#markdownOutput p.code-line:has(+ p.code-line, + hr.code-line) {
+    margin-bottom: 1.2rem !important;
+}
+
+#markdownOutput p.code-line:has(+ hr.code-line) {
+    margin-bottom: 0.75rem !important;
+}
+
+#markdownOutput p:has(+ blockquote, + pre) strong,
+#markdownOutput p:has(+ blockquote, + pre) strong::after {
+    color: var(--blue-purple) !important;
+    margin: 0 !important;
+    margin-bottom: 2rem !important;
+    font-size: 1.05rem !important;
+}
+
+#markdownOutput p:has(+ blockquote, + pre) code,
+#markdownOutput p:has(+ blockquote, + pre) ::after {
+    color: var(--light-blue-transparent);
+}
+
+/* =========================================================
+   5. EMPHASIS
+   ========================================================= */
+
+#markdownOutput strong,
+#markdownOutput b {
+    color: var(--white-blue);
+}
+
+#markdownOutput em,
+#markdownOutput i {
+    color: var(--magenta);
+    font-weight: 700;
+}
+
+#markdownOutput em strong {
+    font-weight: 700;
+}
+
+#markdownOutput del,
+#markdownOutput s {
+    color: var(--muted-blue);
+    text-decoration-line: line-through;
+    text-decoration-color: var(--pink);
+}
+
+#markdownOutput s {
+    text-decoration-color: var(--light-blue-gray) !important;
+}
+
+#markdownOutput sup,
+#markdownOutput sub {
+    color: var(--purple);
+}
+
+#markdownOutput abbr {
+    color: var(--green);
+    text-decoration-style: dotted;
+    cursor: help;
+}
+
+/* =========================================================
+   6. LINKS
+   ========================================================= */
+
+#markdownOutput a,
+#markdownOutput a::before {
+    display: inline-flex;
+}
+
+#markdownOutput a {
+    color: var(--blue) !important;
+    font-weight: 600 !important;
+    text-decoration: 1px underline !important;
+    transition: transform 0.1s ease;
+}
+
+#markdownOutput a:hover {
+    color: var(--blue-hover) !important;
+}
+
+#markdownOutput a:focus {
+    outline: none !important;
+}
+
+#markdownOutput a:active {
+    color: var(--blue-active) !important;
+}
+
+#markdownOutput a:has(strong) {
+    text-decoration: none !important;
+    width: fit-content !important;
+}
+
+#markdownOutput a>strong {
+    color: var(--blue) !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+}
+
+#markdownOutput a:has(strong):hover,
+#markdownOutput a>strong:hover {
+    display: inline-block;
+    color: var(--blue-hover) !important;
+    position: relative !important;
+    text-decoration: 1px solid underline !important;
+}
+
+#markdownOutput a>strong:active {
+    color: var(--blue-active) !important;
+    transform: scale(0.998) !important;
+}
+
+/* =========================================================
+   7. LISTS
+   ========================================================= */
+
+#markdownOutput ul,
+#markdownOutput ol {
+    color: var(--light-gray);
+    margin-top: 0.75rem;
+}
+
+#markdownOutput ul li {
+    margin-bottom: 0.2rem;
+}
+
+#markdownOutput ul>li::marker {
+    color: var(--new-blue);
+}
+
+/* =========================================================
+   8. BLOCKQUOTES
+   ========================================================= */
+
+#markdownOutput blockquote {
+    box-sizing: border-box;
+    display: inline-flex;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1em 1.2em;
+    color: var(--light-gray);
+    background: var(--dark-blue);
+    border-left: 4px solid var(--blue-purple);
+    border-radius: 6px;
+}
+
+#markdownOutput blockquote.code-line,
+#markdownOutput pre:has(code) {
+    margin-bottom: 1.1rem !important;
+    margin-top: 0.125rem !important;
+}
+
+#markdownOutput blockquote.code-line p::before,
+#markdownOutput blockquote.code-line p:hover,
+#markdownOutput blockquote.code-line p.code-line {
+    background-color: var(--dark-gray) !important;
+    border-left: none !important;
+    font-size: 1.1rem;
+}
+
+/* =========================================================
+   9. HORIZONTAL RULES
+   ========================================================= */
+
+#markdownOutput hr {
+    border: 0;
+    border-top: 1px solid var(--blue-purple) !important;
+    background: transparent !important;
+}
+
+#markdownOutput hr.code-line {
+    max-height: 0 !important;
+    margin: 0 !important;
+    margin-bottom: 1rem !important;
+    border-image: linear-gradient(180deg, var(--blue-purple), var(--blue-purple), var(--black)) 1;
+}
+
+/* =========================================================
+   10. CODE
+   ========================================================= */
+
+#markdownOutput pre,
+#markdownOutput code {
+    color: var(--light-blue-transparent) !important;
+    font-family: "Cascadia Code", sans-serif !important;
+}
+
+#markdownOutput code:not(pre > code) {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    padding: 0 !important;
+    background: var(--dark-blue) !important;
+    border: none transparent;
+    border-radius: 6px;
+}
+
+#markdownOutput pre {
+    white-space: pre;
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 2em !important;
+    display: inline-flex;
+    overflow-x: auto;
+    border: none transparent;
+    border-radius: 10px;
+    background: var(--dark-blue);
+}
+
+#markdownOutput pre > code {
+    white-space: pre;
+    overflow-wrap: normal;
+    word-break: normal;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+#markdownOutput .vscode-body pre {
+    background: var(--dark-blue) !important;
+}
+
+#markdownOutput .code-active-line::before {
+    border-left: none !important;
+}
+
+/* =========================================================
+   11. SYNTAX HIGHLIGHTING
+   ========================================================= */
+
+#markdownOutput span.hljs-keyword,
+#markdownOutput span.hljs-title.function_,
+#markdownOutput span.hljs-comment,
+#markdownOutput span.hljs-built_in,
+#markdownOutput span.hljs-string,
+#markdownOutput span.hljs-literal,
+#markdownOutput span.hljs-number,
+#markdownOutput span.hljs-subst,
+#markdownOutput span.hljs-title.class_,
+#markdownOutput span.hljs-meta {
+    font-weight: 400 !important;
+}
+
+#markdownOutput span.hljs-comment {
+    color: var(--gray-blue) !important;
+}
+
+#markdownOutput span.hljs-keyword {
+    color: var(--purple) !important;
+}
+
+#markdownOutput span.hljs-title.function_ {
+    color: var(--blue) !important;
+}
+
+#markdownOutput span.hljs-built_in {
+    color: var(--cyan) !important;
+}
+
+#markdownOutput span.hljs-string {
+    color: var(--green) !important;
+}
+
+#markdownOutput span.hljs-literal,
+#markdownOutput span.hljs-number {
+    color: var(--orange) !important;
+}
+
+#markdownOutput span.hljs-params {
+    color: var(--yellow) !important;
+}
+
+#markdownOutput span.hljs-subst,
+#markdownOutput span.hljs-title.class_ {
+    color: var(--light-blue-gray) !important;
+}
+
+#markdownOutput span.hljs-meta {
+    color: var(--light-blue) !important;
+    font-weight: 500 !important;
+}
+
+/* =========================================================
+   12. TABLES
+   ========================================================= */
+
+#markdownOutput table {
+    width: 100%;
+    color: var(--light-gray);
+    background: var(--black);
+    border-collapse: collapse;
+}
+
+#markdownOutput thead {
+    color: var(--blue);
+    background: var(--black);
+}
+
+#markdownOutput tbody {
+    color: var(--light-gray);
+    background: var(--black);
+}
+
+#markdownOutput tfoot {
+    color: var(--muted-blue);
+    background: var(--black);
+}
+
+#markdownOutput tr {
+    color: var(--table-text);
+    background: var(--black);
+    border-bottom: 1px solid var(--gray);
+}
+
+#markdownOutput tr.code-line {
+    color: var(--table-text);
+    background: var(--black) !important;
+}
+
+#markdownOutput th {
+    color: var(--blue);
+    background: var(--black);
+}
+
+#markdownOutput td {
+    color: var(--light-blue-gray);
+    background: var(--black);
+}
+
+#markdownOutput td,
+#markdownOutput th {
+    padding: 10px 14px;
+    border: 1px solid var(--gray);
+}
+
+#markdownOutput caption {
+    color: var(--muted-blue);
+}
+
+/* =========================================================
+   13. FORMS
+   ========================================================= */
+
+#markdownOutput input {
+    color: var(--light-gray);
+    background: var(--dark-gray);
+    border: 1px solid var(--gray);
+}
+
+/* =========================================================
+   14. INTERACTIVE / SEMANTIC ELEMENTS
+   ========================================================= */
+
+#markdownOutput mark {
+    padding: 0.1em 0.3em;
+    color: var(--mark-text);
+    background: var(--highlight);
+    border-radius: 4px;
+}
+
+#markdownOutput details {
+    padding: 12px;
+    background: var(--dark-gray);
+    border: 1px solid var(--gray);
+    border-radius: 8px;
+}
+
+/* =========================================================
+   15. DEFINITION LISTS
+   ========================================================= */
+
+#markdownOutput dl {
+    color: var(--light-gray);
+}
+
+#markdownOutput dt {
+    color: var(--blue);
+}
+
+#markdownOutput dd {
+    color: var(--light-gray);
+}
+
+/* =========================================================
+   16. MEDIA
+   ========================================================= */
+
+#markdownOutput img {
+    width: min(45rem, 100%) !important;
+    border: 1px solid var(--gray);
+    border-radius: 10px;
+    overflow: hidden !important;
+}
+
+/* =========================================================
+   17. CUSTOM ELEMENT
+   ========================================================= */
+
+#markdownOutput ary {
+    color: var(--light-cyan);
+    cursor: pointer;
+}
+
+/* =========================================================
+   18. MISC FIXES
+   ========================================================= */
+
+#markdownOutput p.code-line:has(strong):hover {
+    position: static !important;
+}
