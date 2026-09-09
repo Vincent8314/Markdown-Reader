@@ -79,7 +79,7 @@ main {
 
 #menuToggle {
   position: fixed;
-  top: 1rem;
+  top: 2.5%;/* pourcentage forced to keep a fixe distance when resizing on phone*/
   left: 1rem;
   z-index: 30;
 
