@@ -18,7 +18,6 @@ const backdrop = document.getElementById("backdrop");
 const DEFAULT_MARKDOWN_URL = "https://vincent8314.github.io/Encyclopedia-md/README.md";
 
 
-
 /* =========================
    RENDER MARKDOWN (shared)
    ========================= */
@@ -209,4 +208,3 @@ if (DEFAULT_MARKDOWN_URL) {
   loadMarkdownFromUrl(DEFAULT_MARKDOWN_URL);
 
 }
-// 
