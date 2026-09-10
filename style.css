@@ -681,9 +681,35 @@ BACKDROP
     color: var(--blue-purple) !important;
     padding: 0 !important;
 }
+#markdownOutput h1 {
+    width: fit-content;
+    color: var(--blue-purple) !important;
+    padding: 0 !important;
+}
+#markdownOutput h1 {
+    line-height: 2.8rem;
+}
+#markdownOutput h2 {
+    line-height: 2.4rem;
+}
+#markdownOutput h3 {
+    line-height: 2.25rem;
+}
+#markdownOutput h4 {
+    line-height: 2.1rem;
+}
+#markdownOutput h5 {
+    line-height: 1.95rem;
+}
+#markdownOutput h6 {
+    line-height: 1.80rem;
+}
+
+
+
 
 #markdownOutput h1 {
-        border-bottom: 4px solid transparent;
+        border-bottom: 0.2rem solid transparent;
         letter-spacing: -0.02em;
         text-decoration: none !important;
         text-underline-offset: 0.3rem;
@@ -696,7 +722,7 @@ BACKDROP
 
 #markdownOutput h2,
 #markdownOutput h3 {
-        border-bottom: 3px solid transparent;
+        border-bottom: 0.16rem solid transparent;
         letter-spacing: -0.02em;
         text-decoration: none !important;
         text-underline-offset: 0.3rem;
@@ -710,7 +736,7 @@ BACKDROP
 #markdownOutput h4,
 #markdownOutput h5,
 #markdownOutput h6 {
-        border-bottom: 3px solid var(--gray);
+        border-bottom: 0.12rem solid var(--gray);
         letter-spacing: -0.02em;
         text-decoration: none !important;
         text-underline-offset: 0.3rem;
@@ -901,6 +927,7 @@ BACKDROP
     background: var(--dark-blue);
     border-left: 4px solid var(--blue-purple);
     border-radius: 6px;
+    margin-left: 0;
 }
 
 #markdownOutput blockquote.code-line,
