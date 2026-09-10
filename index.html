@@ -73,20 +73,24 @@
           Tokyo Violet
         </button>
 
-        <button type="button" data-theme="nord" aria-pressed="false">
-          Nord Frost
+        <button type="button" data-theme="monokai" aria-pressed="false">
+          Monokai Vivid
         </button>
 
-        <button type="button" data-theme="dracula" aria-pressed="false">
-          Dracula Neon
+        <button type="button" data-theme="synthwave" aria-pressed="false">
+          Synthwave Neon
         </button>
 
-        <button type="button" data-theme="gruvbox" aria-pressed="false">
-          Gruvbox Amber
+        <button type="button" data-theme="matrix" aria-pressed="false">
+          Terminal Matrix
         </button>
 
         <button type="button" data-theme="paper" aria-pressed="false">
           Paper Light
+        </button>
+
+        <button type="button" data-theme="solstice" aria-pressed="false">
+          Solstice Light
         </button>
       </div>
     </section>
@@ -105,10 +109,14 @@
   </main>
 
   <!-- Markdown converter -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+
+  <!-- Syntax highlighter: marked.js only converts markdown to HTML,
+       it does not color code by language — highlight.js does that part. -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
   <!-- Application JavaScript -->
-  <script src="script.js"></script>
+  <script defer src="script.js"></script>
 
 </body>
 

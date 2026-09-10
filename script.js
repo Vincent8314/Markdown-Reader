@@ -25,6 +25,18 @@ const DEFAULT_MARKDOWN_URL = "https://vincent8314.github.io/Encyclopedia-md/READ
 function renderMarkdown(markdownText) {
   const html = marked.parse(markdownText);
   content.innerHTML = html;
+
+  // marked.js only produces the <pre><code> structure; it doesn't
+  // color the code itself. highlight.js walks each code block and
+  // wraps the tokens (keywords, strings, etc.) in the hljs-* spans
+  // that style.css already has rules for.
+  if (typeof hljs === "undefined") {
+    console.warn("highlight.js failed to load; code blocks will render uncolored.");
+  } else {
+    content.querySelectorAll("pre code").forEach((block) => {
+      hljs.highlightElement(block);
+    });
+  }
 }
 
 function setStatus(message) {

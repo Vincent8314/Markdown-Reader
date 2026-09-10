@@ -396,145 +396,145 @@ BACKDROP
     --light-blue-transparent: #89dddff2;
 }
 
-#markdownOutput[data-theme="nord"] {
+#markdownOutput[data-theme="monokai"] {
     /* Neutrals */
-    --black: #2e3440;
-    --dark-gray: #333947;
-    --dark-blue: #3b4252;
-    --gray: #4c566a;
-    --gray-blue: #4c566a;
-    --muted-blue: #616e88;
+    --black: #272822;
+    --dark-gray: #2d2e27;
+    --dark-blue: #33342c;
+    --gray: #49483e;
+    --gray-blue: #75715e;
+    --muted-blue: #75715e;
 
     /* Light neutrals */
-    --light-gray: #d8dee9;
-    --light-blue-gray: #e5e9f0;
-    --white-blue: #eceff4;
-    --table-text: #e5e9f0;
-
-    /* Selection */
-    --selection-background: #434c5e;
-    --selection-text: #88c0d0;
-
-    /* Accent colors */
-    --blue: #81a1c1;
-    --blue-hover: #93b4d6;
-    --blue-active: #5e81ac;
-    --purple: #b48ead;
-    --blue-purple: #b48ead;
-    --blue-purple-active: #9a749a;
-    --cyan: #88c0d0;
-    --new-blue: #81a1c1;
-    --light-cyan: #8fbcbb;
-    --green: #a3be8c;
-    --orange: #d08770;
-    --yellow: #ebcb8b;
-    --pink: #bf616a;
-    --magenta: #b48ead;
-    --light-blue: #88c0d0;
-
-    /* Semantic */
-    --mark-text: #3b4252;
-    --highlight: #ebcb8b;
-    --accent-rail: #5e81ac;
-    --heading-rail-start: #3b4a63;
-    --heading-text: #eceff4;
-
-    /* Transparent */
-    --light-blue-transparent: #88c0d0f2;
-}
-
-#markdownOutput[data-theme="dracula"] {
-    /* Neutrals */
-    --black: #191a21;
-    --dark-gray: #21222c;
-    --dark-blue: #282a36;
-    --gray: #44475a;
-    --gray-blue: #6272a4;
-    --muted-blue: #6272a4;
-
-    /* Light neutrals */
-    --light-gray: #e6e6f0;
+    --light-gray: #d6d6c2;
     --light-blue-gray: #f8f8f2;
-    --white-blue: #f8f8f2;
+    --white-blue: #ffffff;
     --table-text: #f8f8f2;
 
     /* Selection */
-    --selection-background: #44475a;
+    --selection-background: #49483e;
     --selection-text: #f8f8f2;
 
     /* Accent colors */
-    --blue: #8be9fd;
-    --blue-hover: #9aeeff;
-    --blue-active: #6fe3ff;
-    --purple: #bd93f9;
-    --blue-purple: #bd93f9;
-    --blue-purple-active: #a277e0;
-    --cyan: #8be9fd;
-    --new-blue: #62d6ef;
-    --light-cyan: #a4ffff;
-    --green: #50fa7b;
-    --orange: #ffb86c;
-    --yellow: #f1fa8c;
-    --pink: #ff79c6;
-    --magenta: #ff79c6;
-    --light-blue: #8be9fd;
+    --blue: #66d9ef;
+    --blue-hover: #7fe0f5;
+    --blue-active: #4bc4dc;
+    --purple: #f92672;
+    --blue-purple: #ae81ff;
+    --blue-purple-active: #9466e0;
+    --cyan: #66d9ef;
+    --new-blue: #66d9ef;
+    --light-cyan: #a1efe4;
+    --green: #a6e22e;
+    --orange: #fd971f;
+    --yellow: #e6db74;
+    --pink: #f92672;
+    --magenta: #f92672;
+    --light-blue: #66d9ef;
 
     /* Semantic */
-    --mark-text: #282a36;
-    --highlight: #f1fa8c;
-    --accent-rail: #bd93f9;
-    --heading-rail-start: #6d4fa3;
+    --mark-text: #272822;
+    --highlight: #e6db74;
+    --accent-rail: #f92672;
+    --heading-rail-start: #ae81ff;
     --heading-text: #f8f8f2;
 
     /* Transparent */
-    --light-blue-transparent: #8be9fdf2;
+    --light-blue-transparent: #66d9eff2;
 }
 
-#markdownOutput[data-theme="gruvbox"] {
+#markdownOutput[data-theme="synthwave"] {
     /* Neutrals */
-    --black: #1d2021;
-    --dark-gray: #282828;
-    --dark-blue: #3c3836;
-    --gray: #504945;
-    --gray-blue: #7c6f64;
-    --muted-blue: #928374;
+    --black: #1a1520;
+    --dark-gray: #201a2b;
+    --dark-blue: #2a2139;
+    --gray: #3e3355;
+    --gray-blue: #6f5a91;
+    --muted-blue: #6f5a91;
 
     /* Light neutrals */
-    --light-gray: #d5c4a1;
-    --light-blue-gray: #ebdbb2;
-    --white-blue: #fbf1c7;
-    --table-text: #ebdbb2;
+    --light-gray: #e0d7f5;
+    --light-blue-gray: #f4eefc;
+    --white-blue: #ffffff;
+    --table-text: #f4eefc;
 
     /* Selection */
-    --selection-background: #504945;
-    --selection-text: #fe8019;
+    --selection-background: #44317a;
+    --selection-text: #ff71ce;
 
     /* Accent colors */
-    --blue: #83a598;
-    --blue-hover: #94b8ab;
-    --blue-active: #458588;
-    --purple: #d3869b;
-    --blue-purple: #d3869b;
-    --blue-purple-active: #b16286;
-    --cyan: #8ec07c;
-    --new-blue: #83a598;
-    --light-cyan: #8ec07c;
-    --green: #b8bb26;
-    --orange: #fe8019;
-    --yellow: #fabd2f;
-    --pink: #fb4934;
-    --magenta: #d3869b;
-    --light-blue: #83a598;
+    --blue: #01cdfe;
+    --blue-hover: #3ddcff;
+    --blue-active: #00a8d1;
+    --purple: #ff71ce;
+    --blue-purple: #b967ff;
+    --blue-purple-active: #9a3ee0;
+    --cyan: #01cdfe;
+    --new-blue: #01cdfe;
+    --light-cyan: #7afcff;
+    --green: #05ffa1;
+    --orange: #ff9f1c;
+    --yellow: #fffb96;
+    --pink: #ff71ce;
+    --magenta: #ff71ce;
+    --light-blue: #01cdfe;
 
     /* Semantic */
-    --mark-text: #3c3836;
-    --highlight: #fabd2f;
-    --accent-rail: #d3869b;
-    --heading-rail-start: #a35c6c;
-    --heading-text: #fbf1c7;
+    --mark-text: #1a1520;
+    --highlight: #fffb96;
+    --accent-rail: #ff71ce;
+    --heading-rail-start: #b967ff;
+    --heading-text: #f4eefc;
 
     /* Transparent */
-    --light-blue-transparent: #ebdbb2f2;
+    --light-blue-transparent: #01cdfef2;
+}
+
+#markdownOutput[data-theme="matrix"] {
+    /* Neutrals */
+    --black: #000000;
+    --dark-gray: #0a0f0a;
+    --dark-blue: #0d150d;
+    --gray: #1c2b1c;
+    --gray-blue: #4d6b4d;
+    --muted-blue: #4d6b4d;
+
+    /* Light neutrals */
+    --light-gray: #b8f2b8;
+    --light-blue-gray: #d4ffd4;
+    --white-blue: #ffffff;
+    --table-text: #ceffce;
+
+    /* Selection */
+    --selection-background: #1f4d1f;
+    --selection-text: #39ff14;
+
+    /* Accent colors */
+    --blue: #00e5ff;
+    --blue-hover: #4df0ff;
+    --blue-active: #00b8cc;
+    --purple: #ff2079;
+    --blue-purple: #b026ff;
+    --blue-purple-active: #8f1fd1;
+    --cyan: #00e5ff;
+    --new-blue: #00e5ff;
+    --light-cyan: #7dffea;
+    --green: #39ff14;
+    --orange: #ff9100;
+    --yellow: #ffe600;
+    --pink: #ff2079;
+    --magenta: #ff2079;
+    --light-blue: #00e5ff;
+
+    /* Semantic */
+    --mark-text: #000000;
+    --highlight: #ffe600;
+    --accent-rail: #39ff14;
+    --heading-rail-start: #b026ff;
+    --heading-text: #d4ffd4;
+
+    /* Transparent */
+    --light-blue-transparent: #00e5fff2;
 }
 
 #markdownOutput[data-theme="paper"] {
@@ -582,6 +582,53 @@ BACKDROP
 
     /* Transparent */
     --light-blue-transparent: #0969dad9;
+}
+
+#markdownOutput[data-theme="solstice"] {
+    /* Neutrals (warm cream background layers) */
+    --black: #fffaf0;
+    --dark-gray: #fbf3e3;
+    --dark-blue: #f5ecd7;
+    --gray: #e0d2b8;
+    --gray-blue: #8a7a5c;
+    --muted-blue: #8a7a5c;
+
+    /* Text neutrals (dark ink, for strong contrast on cream) */
+    --light-gray: #3a2f1e;
+    --light-blue-gray: #1f1608;
+    --white-blue: #000000;
+    --table-text: #1f1608;
+
+    /* Selection */
+    --selection-background: #ffd76b;
+    --selection-text: #7a3e00;
+
+    /* Accent colors (saturated ink tones, not pastel) */
+    --blue: #0047ab;
+    --blue-hover: #1a5fcc;
+    --blue-active: #003380;
+    --purple: #8b00ff;
+    --blue-purple: #6a0dad;
+    --blue-purple-active: #4b0082;
+    --cyan: #007a87;
+    --new-blue: #0047ab;
+    --light-cyan: #00a3ad;
+    --green: #0b6e0b;
+    --orange: #cc4b00;
+    --yellow: #b8860b;
+    --pink: #d6006d;
+    --magenta: #8b00ff;
+    --light-blue: #0047ab;
+
+    /* Semantic */
+    --mark-text: #1f1608;
+    --highlight: #ffe08a;
+    --accent-rail: #8b00ff;
+    --heading-rail-start: #c9a7e8;
+    --heading-text: #1f1608;
+
+    /* Transparent */
+    --light-blue-transparent: #0047abd9;
 }
 
 /* =========================================================
