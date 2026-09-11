@@ -526,8 +526,8 @@ BACKDROP
     /* Selection */
     --selection-background: #1f4d1f;
     --selection-text: #39ff14;
-    --selection-background: #8f1fd1cc;
-    --selection-text: #b8f2b8;
+    /* --selection-background: #8f1fd1cc;
+    --selection-text: #b8f2b8; */
 
 
     /* Accent colors */
