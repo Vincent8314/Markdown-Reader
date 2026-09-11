@@ -346,6 +346,12 @@ BACKDROP
    values change between themes; every visual rule below
    references var(--token-name), so switching data-theme on
    #markdownOutput is enough to fully re-skin the content.
+
+   --quote-shadow / --quote-shadow-nested control the blockquote
+   depth-shadow trick (see section 8). Alpha is tuned per theme
+   based on background luminance: dark bg -> lower alpha, near-
+   black bg -> higher alpha, light bg -> much lower alpha, so the
+   depth cue reads consistently across every palette.
    =============================================================
 */
 
@@ -394,6 +400,10 @@ BACKDROP
 
     /* Transparent */
     --light-blue-transparent: #89dddff2;
+
+    /* Blockquote depth shadow — baseline reference */
+    --quote-shadow: 0 0 1px #00000050;
+    --quote-shadow-nested: -3px -3px 3px #00000036;
 }
 
 #markdownOutput[data-theme="monokai"] {
@@ -441,6 +451,10 @@ BACKDROP
 
     /* Transparent */
     --light-blue-transparent: #66d9eff2;
+
+    /* Blockquote depth shadow — lighter bg than tokyo, slightly lower alpha */
+    --quote-shadow: 0 0 1px #00000040;
+    --quote-shadow-nested: -3px -3px 3px #0000002a;
 }
 
 #markdownOutput[data-theme="synthwave"] {
@@ -488,6 +502,10 @@ BACKDROP
 
     /* Transparent */
     --light-blue-transparent: #01cdfef2;
+
+    /* Blockquote depth shadow — slightly lighter bg than tokyo */
+    --quote-shadow: 0 0 1px #00000048;
+    --quote-shadow-nested: -3px -3px 3px #00000030;
 }
 
 #markdownOutput[data-theme="matrix"] {
@@ -508,6 +526,9 @@ BACKDROP
     /* Selection */
     --selection-background: #1f4d1f;
     --selection-text: #39ff14;
+    --selection-background: #8f1fd1cc;
+    --selection-text: #b8f2b8;
+
 
     /* Accent colors */
     --blue: #00e5ff;
@@ -535,6 +556,10 @@ BACKDROP
 
     /* Transparent */
     --light-blue-transparent: #00e5fff2;
+
+    /* Blockquote depth shadow — pure black bg needs higher alpha to read at all */
+    --quote-shadow: 0 0 1px #00000060;
+    --quote-shadow-nested: -3px -3px 3px #00000045;
 }
 
 #markdownOutput[data-theme="paper"] {
@@ -582,6 +607,10 @@ BACKDROP
 
     /* Transparent */
     --light-blue-transparent: #0969dad9;
+
+    /* Blockquote depth shadow — white bg, keep very subtle */
+    --quote-shadow: 0 0 1px #00000018;
+    --quote-shadow-nested: -3px -3px 3px #00000010;
 }
 
 #markdownOutput[data-theme="solstice"] {
@@ -629,6 +658,10 @@ BACKDROP
 
     /* Transparent */
     --light-blue-transparent: #0047abd9;
+
+    /* Blockquote depth shadow — cream bg, same logic as paper, tiny bump */
+    --quote-shadow: 0 0 1px #00000020;
+    --quote-shadow-nested: -3px -3px 3px #00000014;
 }
 
 /* =========================================================
@@ -687,29 +720,29 @@ BACKDROP
     padding: 0 !important;
 }
 #markdownOutput h1 {
-    line-height: 2.8rem;
+    line-height: 2.6rem;
 }
 #markdownOutput h2 {
-    line-height: 2.4rem;
-}
-#markdownOutput h3 {
-    line-height: 2.25rem;
-}
-#markdownOutput h4 {
     line-height: 2.1rem;
 }
+#markdownOutput h3 {
+    line-height: 1.6rem;
+}
+#markdownOutput h4 {
+    line-height: 1.35rem;
+}
 #markdownOutput h5 {
-    line-height: 1.95rem;
+    line-height: 1.2rem;
 }
 #markdownOutput h6 {
-    line-height: 1.80rem;
+    line-height: 1rem;
 }
 
 
 
 
 #markdownOutput h1 {
-        border-bottom: 0.2rem solid transparent;
+        border-bottom: 0.01rem solid transparent;
         letter-spacing: -0.02em;
         text-decoration: none !important;
         text-underline-offset: 0.3rem;
@@ -722,7 +755,7 @@ BACKDROP
 
 #markdownOutput h2,
 #markdownOutput h3 {
-        border-bottom: 0.16rem solid transparent;
+        border-bottom: 0.01rem solid transparent;
         letter-spacing: -0.02em;
         text-decoration: none !important;
         text-underline-offset: 0.3rem;
@@ -736,7 +769,7 @@ BACKDROP
 #markdownOutput h4,
 #markdownOutput h5,
 #markdownOutput h6 {
-        border-bottom: 0.12rem solid var(--gray);
+        border-bottom: 0.01rem solid var(--gray);
         letter-spacing: -0.02em;
         text-decoration: none !important;
         text-underline-offset: 0.3rem;
@@ -903,7 +936,40 @@ BACKDROP
 #markdownOutput ol {
     color: var(--light-gray);
     margin-top: 0.75rem;
+    padding-left: 1.5rem;
 }
+
+#markdownContent > ul > li:has(input[type=checkbox]) {
+  list-style-type:none;
+}
+
+/* =========================================================
+   check-box design
+   ========================================================= */
+
+
+#markdownContent > ul > li:has(input[type="checkbox"]) input[type="checkbox"] {
+  appearance: none !important;
+}
+/* 1 — Orange */
+#markdownContent > ul > li:has(input[type="checkbox"])::before {
+  all: unset;
+  content: "☑";
+  display: inline-block;
+  background: transparent;
+  color: var(--blue-purple-active);
+  border-left: none !important;
+  box-shadow: none;
+}
+#markdownContent > ul > li input[type="checkbox"] {
+  all: unset !important;
+}
+/* =========================================================
+   end of check-box design
+   ========================================================= */
+
+
+
 
 #markdownOutput ul li {
     margin-bottom: 0.2rem;
@@ -919,15 +985,22 @@ BACKDROP
 
 #markdownOutput blockquote {
     box-sizing: border-box;
-    display: inline-flex;
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 1em 1.2em;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    padding: 0.4rem 1.2rem;
     color: var(--light-gray);
     background: var(--dark-blue);
     border-left: 4px solid var(--blue-purple);
-    border-radius: 6px;
+    border-radius: 2px;
     margin-left: 0;
+    box-shadow: var(--quote-shadow);
+}
+#markdownOutput blockquote blockquote {
+    box-shadow: var(--quote-shadow-nested);
+}
+#markdownOutput blockquote p {
+  display: block !important;
 }
 
 #markdownOutput blockquote.code-line,

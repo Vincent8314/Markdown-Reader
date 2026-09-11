@@ -208,3 +208,35 @@ if (DEFAULT_MARKDOWN_URL) {
   loadMarkdownFromUrl(DEFAULT_MARKDOWN_URL);
 
 }
+
+
+// document.querySelectorAll('#markdownContent ul').forEach(ul => {
+//   let depth = 0;
+//   let el = ul;
+//   while ((el = el.parentElement?.closest('ul'))) depth++;
+//   ul.style.listStyleType = depth % 2 === 0 ? 'disc' : 'circle';
+// });
+
+function applyNestedListStyles(root = document.querySelector('#markdownContent')) {
+  if (!root) return console.warn('applyNestedListStyles: root not found');
+
+  const lists = root.querySelectorAll('ul');
+  console.log(`applyNestedListStyles: found ${lists.length} <ul> elements`);
+
+  lists.forEach(ul => {
+    let depth = 0;
+    let el = ul;
+    while ((el = el.parentElement?.closest('ul'))) depth++;
+    ul.style.listStyleType = depth % 2 === 0 ? 'disc' : 'circle';
+  });
+}
+
+// Run once after initial render
+applyNestedListStyles();
+
+// Re-run whenever markdown content changes (streaming, edits, etc.)
+const container = document.querySelector('#markdownContent');
+if (container) {
+  const observer = new MutationObserver(() => applyNestedListStyles());
+  observer.observe(container, { childList: true, subtree: true });
+}
