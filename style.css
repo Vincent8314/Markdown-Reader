@@ -780,7 +780,7 @@ BACKDROP
 
 #markdownOutput h1, h2, h3, h4, h5, h6 {
   /* border-bottom: 0.01rem solid var(--blue-purple); */
-  box-shadow: 0px 1px 1px -1px var(--blue-purple); /* (x-offset) (y-offset) (blur) (sizing) */
+  box-shadow: 0px 2px 1px -1px var(--blue-purple); /* (x-offset) (y-offset) (blur) (sizing) */
   letter-spacing: -0.02em;
   text-decoration: none;
   color: var(--heading-text);
@@ -815,6 +815,9 @@ BACKDROP
 #markdownOutput li,
 #markdownOutput dd {
   color: var(--light-blue-gray);
+}
+#markdownOutput p {
+  margin: 1rem 0 !important;
 }
 
 /* Added markdownOutput and markdownContent instead of only markdownContent to improve DOM scoring(metric) */
