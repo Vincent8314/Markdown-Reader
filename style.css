@@ -3,6 +3,15 @@
 * {
   box-sizing: border-box;
 }
+  /* table tr th:not(th[align="center"]) {
+  text-align: left;
+} */
+  /* table tr th:not(th[align="right"],[align="center"]) {
+  text-align: left;
+} */
+table tr th:not([align="right"]):not([align="center"]) {
+  text-align: left;
+}
 
 @font-face {
   font-family: 'OpenDyslexic';
@@ -51,9 +60,9 @@ body {
   margin: 0;
   font-family: var(--font-OpenDyslexic);
   /* letter-spacing: -0.02rem; */
-  word-spacing: 0.2rem;
+  word-spacing: 0.15rem;
 
-  line-height: 1.9;
+  line-height: 2;
   color: white;
   background-color: #666;
 }
@@ -981,16 +990,13 @@ BACKDROP
   padding-left: 1.5rem;
 }
 
-#markdownContent>ul>li:has(input[type=checkbox]) {
-  list-style-type: none;
-}
 
 /* =========================================================
-   check-box design
-   ========================================================= */
+check-box design
+========================================================= */
 
-
-#markdownContent>ul>li:has(input[type="checkbox"]) input[type="checkbox"] {
+#markdownContent>ul>li:has(input[type=checkbox]) {
+  list-style-type: none;
   appearance: none !important;
 }
 
@@ -1013,11 +1019,13 @@ BACKDROP
    end of check-box design
    ========================================================= */
 
-
+p {
+  margin: 1.1rem 0;
+}
 
 
 #markdownOutput ul li {
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.1rem;
 }
 
 #markdownOutput ul>li::marker {
@@ -1089,6 +1097,9 @@ BACKDROP
 #markdownOutput code {
   color: var(--light-blue-transparent) !important;
   font-family: var(--font-cascadia-code), sans-serif !important;
+  line-height: 1.6;
+  word-spacing: 0;
+  letter-spacing: 0;
 }
 
 #markdownOutput code:not(pre > code) {
