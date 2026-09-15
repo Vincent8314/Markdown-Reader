@@ -119,7 +119,6 @@ function loadMarkdownFromFile(file) {
    ========================= */
 
 function setTheme(theme) {
-
   output.dataset.theme = theme;
 
   themeButtons.forEach((button) => {
@@ -226,7 +225,7 @@ function applyNestedListStyles(root = document.querySelector('#markdownContent')
   lists.forEach(ul => {
     let depth = 0;
     let el = ul;
-    while ((el = el.parentElement?.closest('ul'))) depth++;
+    while ((el = el.parentElement?.closest('ul'))) depth++;  
     ul.style.listStyleType = depth % 2 === 0 ? 'disc' : 'circle';
   });
 }
