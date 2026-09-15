@@ -23,7 +23,7 @@ const DEFAULT_MARKDOWN_URL = "https://vincent8314.github.io/Encyclopedia-md/READ
    ========================= */
 
 function renderMarkdown(markdownText) {
-  const html = marked.parse(markdownText);
+  const html = marked.parse(markdownText, { breaks: true, gfm: true });
   content.innerHTML = html;
 
   // marked.js only produces the <pre><code> structure; it doesn't
