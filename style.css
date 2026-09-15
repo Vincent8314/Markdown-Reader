@@ -6,85 +6,26 @@
 
 @font-face {
   font-family: 'OpenDyslexic';
-  src: url('Fonts/Open-Dyslexic/OpenDyslexic-Regular.otf') format('opentype');
+  src: url('./Fonts/Open-Dyslexic/OpenDyslexic-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('./Fonts/Open-Dyslexic/OpenDyslexic-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('./Fonts/Open-Dyslexic/OpenDyslexic-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
   font-display: swap;
 }
 
-/* @font-face {
-  font-family: 'OpenDyslexic';
-  src: url('Fonts/Open-Dyslexic/OpenDyslexic-Bold.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-  width: auto;
-}
-
-@font-face {
-  font-family: 'OpenDyslexic';
-  src: url('Fonts/Open-Dyslexic/OpenDyslexic-BoldItalic.otf') format('opentype');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-  width: auto;
-}
-@font-face {
-  font-family: 'OpenDyslexic';
-  src: url('Fonts/Open-Dyslexic/OpenDyslexic-Italic.otf') format('opentype');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-  width: auto;
-}
-@font-face {
-  font-family: 'OpenDyslexic';
-  src: url('Fonts/Open-Dyslexic/OpenDyslexic-Regular.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  width: auto;
-}
-@font-face {
-  font-family: 'OpenDyslexicAlta';
-  src: url('Fonts/Open-Dyslexic/OpenDyslexicAlta-Bold.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-  width: auto;
-}
-@font-face {
-  font-family: 'OpenDyslexicAlta';
-  src: url('Fonts/Open-Dyslexic/OpenDyslexicAlta-BoldItalic.otf') format('opentype');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-  width: auto;
-}
-@font-face {
-  font-family: 'OpenDyslexicAlta';
-  src: url('Fonts/Open-Dyslexic/OpenDyslexicAlta-Italic.otf') format('opentype');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-  width: auto;
-}
-@font-face {
-  font-family: 'OpenDyslexicAlta';
-  src: url('Fonts/Open-Dyslexic/OpenDyslexicAlta-Regular.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-  width: auto;
-}
-@font-face {
-  font-family: 'OpenDyslexicAlta';
-  src: url('Fonts/Open-Dyslexic/OpenDyslexicMono-Regular.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  width: auto;
-} */
 :root {
   --chrome-bg: #14161a;
   --chrome-bg-raised: #1d2026;
