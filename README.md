@@ -1,5 +1,7 @@
 README
 ======
+[Markdown Documentation](https://marked.js.org/)
+[Markdown specification](https://spec.commonmark.org/)
 
 Places I've officially uploaded the latest stable versions to are [dafont.com](http://dafont.com/open-dyslexic.font) and gumroad(see link at [opendyslexic.org](http://opendyslexic.org).)
 
