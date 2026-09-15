@@ -3,12 +3,7 @@
 * {
   box-sizing: border-box;
 }
-#markdownContent > p > code {
-  padding: 0.1rem 5rem !important;
-}
-#markdownOutput #markdownContent > p > code {
-    padding: 0.1rem 0.25rem !important;
-}
+
 @font-face {
   font-family: 'OpenDyslexic';
   src: url('./Fonts/Open-Dyslexic/OpenDyslexic-Regular.otf') format('opentype');
@@ -390,6 +385,7 @@ BACKDROP
 */
 
 #markdownOutput[data-theme="tokyo"] {
+
   /* Neutrals */
   --black: #0d1117;
   --dark-gray: #161b22;
@@ -492,10 +488,12 @@ BACKDROP
 }
 
 #markdownOutput[data-theme="synthwave"] {
+
   /* Neutrals */
   --black: #1a1520;
   --dark-gray: #201a2b;
   --dark-blue: #2a2139;
+  --inline-code: #322643;
   --gray: #3e3355;
   --gray-blue: #6f5a91;
   --muted-blue: #6f5a91;
@@ -789,8 +787,6 @@ BACKDROP
   padding-bottom: 0.5rem;
 }
 
-
-
 /* Headings containing/holding code */
 
 #markdownOutput :is(h1, h2, h3, h4, h5, h6):has(code),
@@ -821,8 +817,11 @@ BACKDROP
   color: var(--light-blue-gray);
 }
 
-#markdownOutput p.code-line {
-  margin: 0 !important;
+/* Added markdownOutput and markdownContent instead of only markdownContent to improve DOM scoring(metric) */
+#markdownOutput #markdownContent > p code, #markdownContent > table > tbody > tr > td > code {
+    padding: 0.1rem 0.25rem !important;
+    border: 1px solid #02c4f550;
+    background-color: var(--inline-code) !important;
 }
 
 #markdownOutput p.code-line:has(+ p.code-line, + hr.code-line) {
@@ -967,6 +966,7 @@ check-box design
   display: inline-block;
   background: transparent;
   color: var(--blue-purple-active);
+  color: var(--cyan);
   border-left: none !important;
   box-shadow: none;
 }
@@ -978,11 +978,6 @@ check-box design
 /* =========================================================
    end of check-box design
    ========================================================= */
-
-p {
-  margin: 1.1rem 0;
-}
-
 
 #markdownOutput ul li {
   margin-bottom: 0.1rem;
@@ -1001,7 +996,7 @@ p {
   display: block;
   width: 100%;
   max-width: 100%;
-  padding: 0.4rem 1.2rem;
+  padding: 0.75rem 1.2rem ;
   color: var(--light-gray);
   background: var(--dark-blue);
   border-left: 4px solid var(--blue-purple);
@@ -1016,6 +1011,7 @@ p {
 
 #markdownOutput blockquote p {
   display: block !important;
+  margin-bottom: 0 !important;
 }
 
 #markdownOutput blockquote.code-line,
@@ -1066,21 +1062,25 @@ p {
   white-space: normal;
   overflow-wrap: anywhere;
   word-break: break-word;
-  padding: 0 !important;
-  background: var(--dark-blue) !important;
+  background: var(--inline-code) !important;
   border: none transparent;
   border-radius: 6px;
 
+
 }
 #markdownContent blockquote code:not(pre > code) {
-  background: var(--black) !important;
+  background: var(--inline-code) !important;
+  border: 1px solid #02c4f550;
   display: inline;
   padding: unset !important;
-  margin-left: -0.55rem !important;
+  margin-left: -0.35rem;
+  margin-right: 0.2rem;
   padding: 0.1rem 0.35rem !important;
   z-index: -1;
 }
-
+#markdownOutput p {
+  margin-top: 0 !important;
+}
 #markdownOutput pre {
   white-space: pre;
   box-sizing: border-box;
@@ -1101,10 +1101,6 @@ p {
   padding: 0 !important;
   border: none !important;
   background: transparent !important;
-}
-
-#markdownOutput .vscode-body pre {
-  background: var(--dark-blue) !important;
 }
 
 #markdownOutput .code-active-line::before {
@@ -1206,7 +1202,7 @@ table tr th:not([align="right"]):not([align="center"]) {
 
 #markdownOutput tr.code-line {
   color: var(--table-text);
-  background: var(--black) !important;
+  background: var(--black);
 }
 
 #markdownOutput th {
