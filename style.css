@@ -3,16 +3,12 @@
 * {
   box-sizing: border-box;
 }
-  /* table tr th:not(th[align="center"]) {
-  text-align: left;
-} */
-  /* table tr th:not(th[align="right"],[align="center"]) {
-  text-align: left;
-} */
-table tr th:not([align="right"]):not([align="center"]) {
-  text-align: left;
+#markdownContent > p > code {
+  padding: 0.1rem 5rem !important;
 }
-
+#markdownOutput #markdownContent > p > code {
+    padding: 0.1rem 0.25rem !important;
+}
 @font-face {
   font-family: 'OpenDyslexic';
   src: url('./Fonts/Open-Dyslexic/OpenDyslexic-Regular.otf') format('opentype');
@@ -48,12 +44,6 @@ table tr th:not([align="right"]):not([align="center"]) {
   --font-cascadia-code: "Cascadia code", "sans-serif";
   --font-Nunito: font-family: "Nunito", sans-serif !important;
   --font-OpenDyslexic: 'OpenDyslexic', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-OpenDyslexicAlta: 'OpenDyslexicAlta', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-}
-
-html,
-body {
-  height: 100%;
 }
 
 body {
@@ -691,6 +681,7 @@ BACKDROP
   --yellow: #b8860b;
   --pink: #d6006d;
   --magenta: #8b00ff;
+
   --light-blue: #0047ab;
 
   /* Semantic */
@@ -789,47 +780,16 @@ BACKDROP
   line-height: 1rem;
 }
 
-
-
-
-#markdownOutput h1 {
-  border-bottom: 0.01rem solid transparent;
+#markdownOutput h1, h2, h3, h4, h5, h6 {
+  /* border-bottom: 0.01rem solid var(--blue-purple); */
+  box-shadow: 0px 1px 1px -1px var(--blue-purple); /* (x-offset) (y-offset) (blur) (sizing) */
   letter-spacing: -0.02em;
   text-decoration: none;
-  text-underline-offset: 0.3rem;
-  border-image: linear-gradient(0deg, var(--heading-rail-start) 0px, var(--blue-purple) 1px, transparent 1px) 1 !important;
-  border-image-slice: 1 !important;
   color: var(--heading-text);
-  /* font-family: var(--font-Nunito); */
   padding-bottom: 0.5rem;
 }
 
-#markdownOutput h2,
-#markdownOutput h3 {
-  border-bottom: 0.01rem solid transparent;
-  letter-spacing: -0.02em;
-  text-decoration: none !important;
-  text-underline-offset: 0.3rem;
-  border-image: linear-gradient(0deg, var(--heading-rail-start) 0px, var(--blue-purple) 1px, transparent 1px) 1 !important;
-  border-image-slice: 1 !important;
-  color: var(--heading-text);
-  /* font-family: var(--font-Nunito); */
-  padding-bottom: 0.5rem;
-}
 
-#markdownOutput h4,
-#markdownOutput h5,
-#markdownOutput h6 {
-  border-bottom: 0.01rem solid var(--gray);
-  letter-spacing: -0.02em;
-  text-decoration: none !important;
-  text-underline-offset: 0.3rem;
-  border-image: linear-gradient(0deg, var(--heading-rail-start) 0px, var(--blue-purple) 1px, transparent 20px) 1 !important;
-  border-image-slice: 1 !important;
-  color: var(--heading-text);
-  /* font-family: var(--font-Nunito); */
-  padding-bottom: 0.5rem;
-}
 
 /* Headings containing/holding code */
 
@@ -1110,6 +1070,15 @@ p {
   background: var(--dark-blue) !important;
   border: none transparent;
   border-radius: 6px;
+
+}
+#markdownContent blockquote code:not(pre > code) {
+  background: var(--black) !important;
+  display: inline;
+  padding: unset !important;
+  margin-left: -0.55rem !important;
+  padding: 0.1rem 0.35rem !important;
+  z-index: -1;
 }
 
 #markdownOutput pre {
@@ -1201,6 +1170,11 @@ p {
 /* =========================================================
    12. TABLES
    ========================================================= */
+
+
+table tr th:not([align="right"]):not([align="center"]) {
+  text-align: left;
+}
 
 #markdownOutput table {
   width: 100%;
