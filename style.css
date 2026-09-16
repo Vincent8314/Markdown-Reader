@@ -370,16 +370,6 @@ BACKDROP
 
 /* =============================================================
    MARKDOWN THEMES
-   5 selectable palettes for #markdownOutput. Only the token
-   values change between themes; every visual rule below
-   references var(--token-name), so switching data-theme on
-   #markdownOutput is enough to fully re-skin the content.
-
-   --quote-shadow / --quote-shadow-nested control the blockquote
-   depth-shadow trick (see section 8). Alpha is tuned per theme
-   based on background luminance: dark bg -> lower alpha, near-
-   black bg -> higher alpha, light bg -> much lower alpha, so the
-   depth cue reads consistently across every palette.
    =============================================================
 */
 
@@ -826,11 +816,10 @@ BACKDROP
 #markdownOutput > #markdownContent > code:not(pre > code), 
 #markdownOutput > #markdownContent > ul li code, 
 #markdownOutput > #markdownContent > ul li :is(strong, em) code  {
-    padding: 0.1rem 0.25rem !important;
+    padding: 0rem 0.25rem 0.1rem 0.25rem !important;
     border: 1px solid #02c4f550;
     background-color: var(--inline-code) !important;
 }
-
 
 #markdownOutput p.code-line:has(+ p.code-line, + hr.code-line) {
   margin-bottom: 1.2rem !important;
@@ -956,7 +945,6 @@ BACKDROP
   margin-top: 0.75rem;
   padding-left: 1.5rem;
 }
-
 
 /* =========================================================
 check-box design
