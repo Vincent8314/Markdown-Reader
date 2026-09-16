@@ -44,7 +44,6 @@
 body {
   margin: 0;
   font-family: var(--font-OpenDyslexic);
-  /* letter-spacing: -0.02rem; */
   word-spacing: 0.15rem;
 
   line-height: 2;
@@ -821,11 +820,17 @@ BACKDROP
 }
 
 /* Added markdownOutput and markdownContent instead of only markdownContent to improve DOM scoring(metric) */
-#markdownOutput #markdownContent > p code, #markdownContent > table > tbody > tr > td > code {
+#markdownOutput > #markdownContent > p code, 
+#markdownOutput > #markdownContent > table > tbody > tr > td > code, 
+#markdownOutput > #markdownContent > blockquote code:not(pre > code), 
+#markdownOutput > #markdownContent > code:not(pre > code), 
+#markdownOutput > #markdownContent > ul li code, 
+#markdownOutput > #markdownContent > ul li :is(strong, em) code  {
     padding: 0.1rem 0.25rem !important;
     border: 1px solid #02c4f550;
     background-color: var(--inline-code) !important;
 }
+
 
 #markdownOutput p.code-line:has(+ p.code-line, + hr.code-line) {
   margin-bottom: 1.2rem !important;
@@ -1065,7 +1070,6 @@ check-box design
   white-space: normal;
   overflow-wrap: anywhere;
   word-break: break-word;
-  background: var(--inline-code) !important;
   border: none transparent;
   border-radius: 6px;
 
