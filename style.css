@@ -3,7 +3,11 @@
 * {
   box-sizing: border-box;
 }
-
+/* Avoid Strange resizing on smartphone and keep the size of the functional css */
+ html {
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
 @font-face {
   font-family: 'OpenDyslexic';
   src: url('./Fonts/Open-Dyslexic/OpenDyslexic-Regular.otf') format('opentype');
@@ -46,10 +50,7 @@
     -webkit-text-size-adjust: none !important;
     text-size-adjust: none !important;
 } */
- html {
-    -webkit-text-size-adjust: none;
-    text-size-adjust: none;
-}
+
 body {
   margin: 0;
   font-family: var(--font-OpenDyslexic);
