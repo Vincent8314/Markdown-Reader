@@ -29,6 +29,21 @@
   font-style: italic;
   font-display: swap;
 }
+@font-face {
+  font-family: 'OpenSans';
+  src: url('./Fonts/OpenSans-VariableFont_wdth\,wght.ttf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('./Fonts/OpenSans-Italic-VariableFont_wdth\,wght.ttf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
 
 :root {
   --chrome-bg: #14161a;
@@ -40,6 +55,7 @@
   --accent-contrast: #f4ecff;
 
   /* font */
+  --font-OpenSans: "OpenSans", "sans-serif";
   --font-cascadia-code: "Cascadia code", "sans-serif";
   /* --font-Nunito: font-family: "Nunito", sans-serif !important; */
   --font-OpenDyslexic: 'OpenDyslexic', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -53,7 +69,7 @@
 
 body {
   margin: 0;
-  font-family: var(--font-OpenDyslexic);
+  font-family: var(--font-OpenSans);
   word-spacing: 0.15rem;
 
   line-height: 2;
@@ -864,7 +880,7 @@ BACKDROP
 
 #markdownOutput em,
 #markdownOutput i {
-  color: var(--magenta);
+  color: var(--white-blue);
   font-weight: 700;
 }
 
