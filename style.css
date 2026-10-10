@@ -881,11 +881,6 @@ BACKDROP
 #markdownOutput em,
 #markdownOutput i {
   color: var(--white-blue);
-  font-weight: 700;
-}
-
-#markdownOutput em strong {
-  font-weight: 700;
 }
 
 #markdownOutput del,
