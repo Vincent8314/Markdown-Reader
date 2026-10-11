@@ -841,6 +841,7 @@ BACKDROP
 #markdownOutput > #markdownContent > blockquote code:not(pre > code), 
 #markdownOutput > #markdownContent > code:not(pre > code), 
 #markdownOutput > #markdownContent > ul li code, 
+#markdownOutput > #markdownContent > ol li code, 
 #markdownOutput > #markdownContent > ul li :is(strong, em) code  {
     padding: 0.08rem 0.25rem 0.05rem 0.25rem !important;
     border: 1px solid #02c4f550;
