@@ -1,45 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 * {
   box-sizing: border-box;
 }
 /* Avoid Strange resizing on smartphone and keep the size of the functional css */
- html {
-    -webkit-text-size-adjust: none;
-    text-size-adjust: none;
+html {
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }
 @font-face {
-  font-family: 'OpenDyslexic';
-  src: url('./Fonts/Open-Dyslexic/OpenDyslexic-Regular.otf') format('opentype');
+  font-family: "OpenDyslexic";
+  src: url("./Fonts/Open-Dyslexic/OpenDyslexic-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'OpenDyslexic';
-  src: url('./Fonts/Open-Dyslexic/OpenDyslexic-Bold.otf') format('opentype');
+  font-family: "OpenDyslexic";
+  src: url("./Fonts/Open-Dyslexic/OpenDyslexic-Bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'OpenDyslexic';
-  src: url('./Fonts/Open-Dyslexic/OpenDyslexic-BoldItalic.otf') format('opentype');
+  font-family: "OpenDyslexic";
+  src: url("./Fonts/Open-Dyslexic/OpenDyslexic-BoldItalic.otf")
+    format("opentype");
   font-weight: 700;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
-  font-family: 'OpenSans';
-  src: url('./Fonts/OpenSans-VariableFont_wdth\,wght.ttf') format('opentype');
+  font-family: "OpenSans";
+  src: url("./Fonts/OpenSans-VariableFont_wdth\,wght.ttf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'OpenSans';
-  src: url('./Fonts/OpenSans-Italic-VariableFont_wdth\,wght.ttf') format('opentype');
+  font-family: "OpenSans";
+  src: url("./Fonts/OpenSans-Italic-VariableFont_wdth\,wght.ttf")
+    format("opentype");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -58,7 +60,9 @@
   --font-OpenSans: "OpenSans", "sans-serif";
   --font-cascadia-code: "Cascadia code", "sans-serif";
   /* --font-Nunito: font-family: "Nunito", sans-serif !important; */
-  --font-OpenDyslexic: 'OpenDyslexic', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-OpenDyslexic:
+    "OpenDyslexic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
 }
 
 /* #markdownContent pre:has(code.language-html.hljs) code {
@@ -71,7 +75,6 @@ body {
   margin: 0;
   font-family: var(--font-OpenSans);
   word-spacing: 0.15rem;
-
   line-height: 2;
   color: white;
   background-color: #666;
@@ -95,7 +98,6 @@ input {
   white-space: nowrap;
 }
 
-
 /* =========================
    MAIN / MARKDOWN AREA
    ========================= */
@@ -114,7 +116,7 @@ main {
 /* One shared reading column. Every markdown element inherits
    this width — nothing inside sets its own max-width/centering. */
 #markdownContent {
-  max-width: 880px;
+  max-width: 50rem;
   width: 100%;
   margin: 0 auto;
 }
@@ -179,7 +181,9 @@ main {
   height: 2px;
   background-color: currentColor;
   border-radius: 1px;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 #menuToggle[aria-expanded="true"] .menuIcon span:nth-child(1) {
@@ -193,7 +197,6 @@ main {
 #menuToggle[aria-expanded="true"] .menuIcon span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
-
 
 /* =========================
 BACKDROP
@@ -209,7 +212,6 @@ BACKDROP
 #backdrop[hidden] {
   display: none;
 }
-
 
 /* =========================
    SIDEBAR
@@ -330,7 +332,9 @@ BACKDROP
   color: var(--chrome-text);
   text-align: center;
   font-weight: 600;
-  transition: border-color 0.15s ease, background-color 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
 }
 
 .fileLabel:hover {
@@ -379,13 +383,11 @@ BACKDROP
   min-height: 1.4rem;
 }
 
-
 /* =========================
    REDUCED MOTION
    ========================= */
 
 @media (prefers-reduced-motion: reduce) {
-
   #sidebar,
   .menuIcon span,
   #menuToggle {
@@ -393,14 +395,12 @@ BACKDROP
   }
 }
 
-
 /* =============================================================
    MARKDOWN THEMES
    =============================================================
 */
 
 #markdownOutput[data-theme="tokyo"] {
-
   /* Neutrals */
   --black: #0d1117;
   --dark-gray: #161b22;
@@ -503,7 +503,6 @@ BACKDROP
 }
 
 #markdownOutput[data-theme="synthwave"] {
-
   /* Neutrals */
   --black: #1a1520;
   --dark-gray: #201a2b;
@@ -575,7 +574,6 @@ BACKDROP
   --selection-text: #39ff14;
   /* --selection-background: #8f1fd1cc;
     --selection-text: #b8f2b8; */
-
 
   /* Accent colors */
   --blue: #00e5ff;
@@ -793,7 +791,12 @@ BACKDROP
   line-height: 1rem;
 }
 
-#markdownOutput h1, h2, h3, h4, h5, h6 {
+#markdownOutput h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   /* border-bottom: 0.01rem solid var(--blue-purple); */
   box-shadow: 0px 2px 1px -1px var(--blue-purple); /* (x-offset) (y-offset) (blur) (sizing) */
   letter-spacing: -0.02em;
@@ -805,7 +808,7 @@ BACKDROP
 /* Headings containing/holding code */
 
 #markdownOutput :is(h1, h2, h3, h4, h5, h6):has(code),
-#markdownOutput :is(h1, h2, h3, h4, h5, h6)>code {
+#markdownOutput :is(h1, h2, h3, h4, h5, h6) > code {
   color: var(--blue-purple) !important;
   text-decoration: none !important;
 }
@@ -818,7 +821,7 @@ BACKDROP
 
 /* Headings containing <strong> */
 
-#markdownOutput :is(h1, h2, h3, h4, h5, h6)>strong {
+#markdownOutput :is(h1, h2, h3, h4, h5, h6) > strong {
   color: var(--blue-purple);
 }
 
@@ -830,23 +833,30 @@ BACKDROP
 #markdownOutput li,
 #markdownOutput dd {
   color: var(--light-blue-gray);
+  word-spacing: min(0.1rem,auto); 
+  /* overflow-wrap: break-word; */
+  /* break long words to prevent overflow */
+  /* text-align: justify; */
+  /* fill each line by stretching gaps */
+  /* hyphens: auto; */
+  /* -webkit-hyphens: auto; */
 }
 #markdownOutput p {
   margin: 1rem 0 !important;
 }
 
 /* Added markdownOutput and markdownContent instead of only markdownContent to improve DOM scoring(metric) */
-#markdownOutput > #markdownContent > p code, 
-#markdownOutput > #markdownContent > table > tbody > tr > td > code, 
-#markdownOutput > #markdownContent > blockquote code:not(pre > code), 
-#markdownOutput > #markdownContent > code:not(pre > code), 
-#markdownOutput > #markdownContent > ul li code, 
-#markdownOutput > #markdownContent > ol li code, 
-#markdownOutput > #markdownContent > ul li :is(strong, em) code  {
-    padding: 0.08rem 0.25rem 0.05rem 0.25rem !important;
-    border: 1px solid #02c4f550;
-    background-color: var(--inline-code) !important;
-    margin: 0 -0.05rem;
+#markdownOutput > #markdownContent > p code,
+#markdownOutput > #markdownContent > table > tbody > tr > td > code,
+#markdownOutput > #markdownContent > blockquote code:not(pre > code),
+#markdownOutput > #markdownContent > code:not(pre > code),
+#markdownOutput > #markdownContent > ul li code,
+#markdownOutput > #markdownContent > ol li code,
+#markdownOutput > #markdownContent > ul li :is(strong, em) code {
+  padding: 0.08rem 0.25rem 0.05rem 0.25rem !important;
+  border: 1px solid #02c4f550;
+  background-color: var(--inline-code) !important;
+  margin: 0 -0.05rem;
 }
 
 #markdownOutput p.code-line:has(+ p.code-line, + hr.code-line) {
@@ -869,6 +879,15 @@ BACKDROP
 #markdownOutput p:has(+ blockquote, + pre) ::after {
   color: var(--light-blue-transparent);
 }
+
+#markdownContent > pre {
+  overflow-x: auto; /* shows a horizontal scrollbar when the content is wider than the element */
+  scrollbar-width: thin;     
+  scrollbar-color: var(--gray) transparent; 
+  scrollbar-gutter: stable; /*keep an horizontal space for the scroll-bar to appears */
+  /* scrollbar-gutter: both-edges;       */
+}
+
 
 /* =========================================================
    5. EMPHASIS
@@ -939,21 +958,21 @@ BACKDROP
   width: fit-content !important;
 }
 
-#markdownOutput a>strong {
+#markdownOutput a > strong {
   color: var(--blue) !important;
   font-weight: 700 !important;
   text-decoration: none !important;
 }
 
 #markdownOutput a:has(strong):hover,
-#markdownOutput a>strong:hover {
+#markdownOutput a > strong:hover {
   display: inline-block;
   color: var(--blue-hover) !important;
   position: relative !important;
   text-decoration: 1px solid underline !important;
 }
 
-#markdownOutput a>strong:active {
+#markdownOutput a > strong:active {
   color: var(--blue-active) !important;
   transform: scale(0.998) !important;
 }
@@ -973,13 +992,13 @@ BACKDROP
 check-box design
 ========================================================= */
 
-#markdownContent>ul>li:has(input[type=checkbox]) {
+#markdownContent > ul > li:has(input[type="checkbox"]) {
   list-style-type: none;
   appearance: none !important;
 }
 
 /* 1 — Orange */
-#markdownContent>ul>li:has(input[type="checkbox"])::before {
+#markdownContent > ul > li:has(input[type="checkbox"])::before {
   all: unset;
   content: "☑";
   display: inline-block;
@@ -990,7 +1009,7 @@ check-box design
   box-shadow: none;
 }
 
-#markdownContent>ul>li input[type="checkbox"] {
+#markdownContent > ul > li input[type="checkbox"] {
   all: unset !important;
 }
 
@@ -1002,10 +1021,9 @@ check-box design
   margin-bottom: 0.1rem;
 }
 
-
-#markdownOutput #markdownContent  ul>li::marker {
+#markdownOutput #markdownContent ul > li::marker {
   color: var(--new-blue);
-  vertical-align:middle !important;
+  vertical-align: middle !important;
   font-size: 0.85rem;
 }
 
@@ -1018,7 +1036,7 @@ check-box design
   display: block;
   width: 100%;
   max-width: 100%;
-  padding: 0.75rem 1.2rem ;
+  padding: 0.75rem 1.2rem;
   color: var(--light-gray);
   background: var(--dark-blue);
   border-left: 4px solid var(--blue-purple);
@@ -1064,7 +1082,13 @@ check-box design
   max-height: 0 !important;
   margin: 0 !important;
   margin-bottom: 1rem !important;
-  border-image: linear-gradient(180deg, var(--blue-purple), var(--blue-purple), var(--black)) 1;
+  border-image: linear-gradient(
+      180deg,
+      var(--blue-purple),
+      var(--blue-purple),
+      var(--black)
+    )
+    1;
 }
 
 /* =========================================================
@@ -1086,8 +1110,6 @@ check-box design
   word-break: break-word;
   border: none transparent;
   border-radius: 6px;
-
-
 }
 #markdownContent blockquote code:not(pre > code) {
   background: var(--inline-code) !important;
@@ -1115,7 +1137,7 @@ check-box design
   background: var(--dark-blue);
 }
 
-#markdownOutput pre>code {
+#markdownOutput pre > code {
   white-space: pre;
   overflow-wrap: normal;
   word-break: normal;
@@ -1187,7 +1209,6 @@ check-box design
 /* =========================================================
    12. TABLES
    ========================================================= */
-
 
 table tr th:not([align="right"]):not([align="center"]) {
   text-align: left;
@@ -1295,7 +1316,7 @@ table tr th:not([align="right"]):not([align="center"]) {
    ========================================================= */
 
 #markdownOutput img {
-  width: min(45rem, 100%) !important;
+  width: 100% !important;
   border: 1px solid var(--gray);
   border-radius: 10px;
   overflow: hidden !important;
@@ -1317,3 +1338,5 @@ table tr th:not([align="right"]):not([align="center"]) {
 #markdownOutput p.code-line:has(strong):hover {
   position: static !important;
 }
+
+
