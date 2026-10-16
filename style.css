@@ -52,7 +52,7 @@ html {
   --chrome-bg-raised: #1d2026;
   --chrome-border: #2a2d34;
   --chrome-text: #e7e7ea;
-  --chrome-text-dim: #9a9da5;
+  --hrome-text-dim: #9a9da5;
   --accent: blueviolet;
   --accent-contrast: #f4ecff;
 
@@ -880,14 +880,16 @@ h6 {
   color: var(--light-blue-transparent);
 }
 
-#markdownContent > pre {
+#markdownContent > pre, #markdownContent > details > summary + pre {
   overflow-x: auto; /* shows a horizontal scrollbar when the content is wider than the element */
   scrollbar-width: thin;     
   scrollbar-color: var(--gray) transparent; 
   scrollbar-gutter: stable; /*keep an horizontal space for the scroll-bar to appears */
   /* scrollbar-gutter: both-edges;       */
 }
-
+#markdownContent > details > summary + pre {
+  margin:2px 0 0 0 !important;
+}
 
 /* =========================================================
    5. EMPHASIS
