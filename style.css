@@ -1131,14 +1131,14 @@ check-box design
   padding: 0.1rem 0.35rem !important;
   z-index: -1;
 }
-#markdownContent p a {
+/* #markdownContent p a {
   position: relative;
 }
 #markdownOutput #markdownContent p a code {
   border: none !important;
-  font-size: 1.12em; /* keep in EM to match the a you chose it for that */
+  font-size: 1.14rem;
   background-color: transparent !important;
-}
+} */
 
 #markdownOutput p {
   margin-top: 0 !important;
