@@ -1222,6 +1222,15 @@ table tr th:not([align="right"]):not([align="center"]) {
   background: var(--black);
   border-collapse: collapse;
 }
+#markdownOutput :is(table, thead, tbody, tfoot, tr, th, td) code {
+  word-break: normal;
+  white-space: nowrap;
+  overflow-wrap: normal;
+}
+
+#markdownOutput :is(tr td) code {
+  white-space: nowrap;
+}
 
 #markdownOutput thead {
   color: var(--blue);
