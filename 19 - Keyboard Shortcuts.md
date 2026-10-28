@@ -4,7 +4,7 @@
 
 - **`Ctrl + Shift + P`** Command Palette
 - **`Ctrl + Shift + E`** Show Explorer
-- **`Ctrl + `** or **Ctrl + J`**: Toggle panel/terminal
+- **`Ctrl + ̀`** or **`Ctrl + J`**: Toggle panel/terminal
 - **`Ctrl + B`** Toggle sidebar
 - **`Ctrl + F`** Search in files
 - **`Ctrl + Shift + F`** Search in all files
