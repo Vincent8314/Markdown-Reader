@@ -15,7 +15,8 @@ const closeSidebar = document.getElementById("closeSidebar");
 const sidebar = document.getElementById("sidebar");
 const backdrop = document.getElementById("backdrop");
 
-const DEFAULT_MARKDOWN_URL = "https://vincent8314.github.io/Encyclopedia-md/README.md";
+// const DEFAULT_MARKDOWN_URL = "https://vincent8314.github.io/Encyclopedia-md/README.md"; //Check URL to convert new ones
+const DEFAULT_MARKDOWN_URL = "https://vincent8314.github.io/Markdown-Reader/19%20-%20Keyboard%20Shortcuts.md";
 
 
 /* =========================
